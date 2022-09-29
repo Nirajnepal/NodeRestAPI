@@ -14,7 +14,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/products", {
 }).then(() => {
     console.log("Successfully connected to the database");    
 }).catch(err => {
-    console.log('Could not connect to the database. Error...', err);
+    console.log('Could not connect to the database. Error->', err);
     process.exit();
 });
 
@@ -25,14 +25,12 @@ app.use(router)
 
 
 
-app.get('/', (req, res) => {
-    res.json({"message": "Server is running :D"});
-});
-
 let PORT = 8080
+let localhost = "http://127.0.0.1"
 
 app.listen(PORT, () => {
-    console.log(`Server is listening on port ${PORT}`);
+    console.log(`Server is listening at ${localhost}:${PORT}/`);
+    console.log(`Endpoints: ${localhost}:${PORT}/products method: GET, POST, DELETE`)
 });
 
 

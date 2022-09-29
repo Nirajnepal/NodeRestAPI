@@ -25,6 +25,16 @@ const createProduct = (req, res) => {
   });
 }; 
 
+const deleteProducts = (req, res) => {
+  products = Product.find((err, products)=>{
+    if(err){
+      res.send(err);
+    }
+  })
+  products.deleteMany({})
+  res.json("All products deleted!")
+}
+
 module.exports = {
-  getProducts, createProduct
+  getProducts, createProduct, deleteProducts
 };
