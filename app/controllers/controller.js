@@ -1,19 +1,23 @@
 const Product = require("../model/model")
-
+let GET_Counter = 0
+let POST_Counter = 0
 
 const getProducts = (req, res) => {
   console.log(`> Products GET: received request`)
+  GET_Counter += 1 
   Product.find((err, products) => {
     if (err) {
       res.send(err);
     }
     console.log(`< Products GET: sending response`)
+    console.log(`Processed Request Count--> GET: ${GET_Counter}, POST: ${POST_Counter}`)
     res.json(products);
   });
 };
 
 const createProduct = (req, res) => {
   console.log(`> Products POST: received request`)
+  POST_Counter += 1 
   const product = new Product({
     name: req.body.name,
     category: req.body.category,
@@ -25,6 +29,7 @@ const createProduct = (req, res) => {
       res.send(err);
     }
     console.log(`< Products POST: sending response`)
+    console.log(`Processed Request Count--> GET: ${GET_Counter}, POST: ${POST_Counter}`)
     res.json(product);
   });
 }; 
