@@ -3,10 +3,15 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const router =  require("./app/routes/routes")
 
-//Initializes express
+/* 
+ Initializes express
+*/
 const app = express();
 
-//Establish connection to Mongoose server 
+
+/* 
+ Establish connection to MongoDB server using Mongoose package 
+*/
 mongoose.Promise = global.Promise;
 
 mongoose.connect("mongodb://127.0.0.1:27017/products", {
@@ -24,7 +29,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(router)
 
 
-
+/* 
+ Assign the ports to listen
+*/
 let PORT = 8080
 let localhost = "http://127.0.0.1"
 

@@ -2,6 +2,9 @@ const Product = require("../model/model")
 let GET_Counter = 0
 let POST_Counter = 0
 
+/* 
+ Gets all the products in json format 
+*/
 const getProducts = (req, res) => {
   console.log(`> Products GET: received request`)
   GET_Counter += 1 
@@ -15,6 +18,9 @@ const getProducts = (req, res) => {
   });
 };
 
+/* 
+ Creates a new product from json payload
+*/
 const createProduct = (req, res) => {
   console.log(`> Products POST: received request`)
   POST_Counter += 1 
@@ -34,6 +40,9 @@ const createProduct = (req, res) => {
   });
 }; 
 
+/* 
+ Delete all the products
+*/
 const deleteProducts = (req, res) => {
   console.log(`> Products DELETE: received request`)
   products = Product.find((err, products)=>{
